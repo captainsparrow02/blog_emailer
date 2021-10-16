@@ -11,7 +11,7 @@ def extract_content(url):
 	heading, mainBody, date= content_parser(tag)
 	link = get_href(tag)
 
-	return (heading, mainBody, date, link)
+	return (heading, mainBody, link, date)
 
 	
 		
