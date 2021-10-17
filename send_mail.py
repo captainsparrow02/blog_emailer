@@ -13,9 +13,15 @@ def email(fromMail, toMail, password, message):
 	server.set_debuglevel(0)
 	server.ehlo()
 	server.starttls()
-	server.login(FROM, PASS)
-	server.sendmail(FROM, TO, message)
+	try:
+		server.login(FROM, PASS)
+		server.sendmail(FROM, TO, message)
+		print("Email Sent")
+	except smtplib.SMTPAuthenticationError:
+		print("!!!!!!!! Authentication failed !!!!!!!!!")
+		print("Please enter valid EmailId/Password.")
+	
 
-	print("Email Sent\nClosing Server")
-
+	
+	print("---------Closing Server----------")
 	server.quit()
